@@ -9,7 +9,7 @@
   ],
   "scripts": {
     "prebuild": "rimraf ./dist/*",
-    "build": "babel --out-dir dist src",
+    "build": "babel --out-dir dist src"
   },
   "repository": {
     "type": "git",
