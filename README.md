@@ -26,7 +26,7 @@ If you want an extension that works directly on `AudioNode`s.
 ## Installation
 
 ```sh
-npm i -S custom-audio-param
+npm i -S audio-param-shim
 ```
 
 
