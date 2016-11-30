@@ -1,0 +1,40 @@
+{
+  "name": "audio-param-shim",
+  "version": "1.0.0",
+  "description": "An AudioParam shim that lets you act on value changes in any way you want",
+  "main": "dist/createAudioParam.js",
+  "files": [
+    "dist",
+    "src"
+  ],
+  "scripts": {
+    "build": "babel --out-dir dist src",
+    "build:example": "browserify -t babelify -e example/example.js -o example/example.dist.js",
+    "build:example:w": "watchify -t babelify -e example/example.js -o example/example.dist.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alexanderwallin/audio-param-shim.git"
+  },
+  "author": "Alexander Wallin <office@alexanderwallin.com> (http://alexanderwallin.com)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alexanderwallin/audio-param-shim/issues"
+  },
+  "homepage": "https://github.com/alexanderwallin/audio-param-shim#readme",
+  "dependencies": {
+    "core-decorators": "^0.14.0",
+    "invariant": "^2.2.2",
+    "lodash.isnumber": "^3.0.3",
+    "pseudo-audio-param": "^1.1.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.18.0",
+    "babel-plugin-transform-class-properties": "^6.19.0",
+    "babel-plugin-transform-decorators-legacy": "^1.3.4",
+    "babel-preset-latest": "^6.16.0",
+    "babelify": "^7.3.0",
+    "browserify": "^13.1.1",
+    "watchify": "^3.7.0"
+  }
+}
