@@ -1,6 +1,6 @@
 # Shimmed `AudioParam`s
 
-`audio-param-shim` lets you create objects that work aslmost exactly like [`AudioParam`s](https://developer.mozilla.org/en-US/docs/Web/API/AudioParam), except it doesn't actually touch any web audio stuff. Instead, one can subscribe for value changes and then do whatever one wants with that value.
+`audio-param-shim` lets you create objects that work almost exactly like [`AudioParam`s](https://developer.mozilla.org/en-US/docs/Web/API/AudioParam), except it doesn't actually touch any web audio stuff. Instead, one can subscribe for value changes and then do whatever one wants with that value.
 
 All value scheduling methods are inherited from [`pseudo-audio-param`](https://github.com/mohayonao/pseudo-audio-param) by [@mohayonao](https://github.com/mohayonao).
 
@@ -36,7 +36,7 @@ npm i -S custom-audio-param
 import createAudioParam from 'custom-audio-param'
 
 // Create a NoiseParam class
-const NoiseParam = createAudioParam('wobble', 0.25, 0, 1)
+const NoiseParam = createAudioParam('noise', 0.25, 0, 1)
 
 // Create a param instance and change its value
 const ctx = new AudioContext()
@@ -65,7 +65,7 @@ noise.exponentialRampToValueAtTime(0.9, ctx.currentTime + 3)
 Returns a `AudioParamShim` class that looks and acts just like an `AudioParam` instance, except it doesn't actually touch any web audio stuff. Instead, one can subscribe for value changes and then do whatever one wants with that value.
 
 | Argument       | Type    | Description                   |
-------------------------------------------------------------
+| -------------- | ------- | ----------------------------- |
 | `name`         | String  | The parameter's name          |
 | `defaultValue` | Number  | The parameter's default value |
 | `minValue`     | Number  | The parameter's minimum value |
@@ -76,7 +76,7 @@ Returns a `AudioParamShim` class that looks and acts just like an `AudioParam` i
 #### Properties
 
 | Property                  | Type   | Description                   |
-----------------------------------------------------------------------
+| ------------------------- | ------ | ----------------------------- |
 | `defaultValue` (readonly) | Number | The parameter's default value |
 | `maxValue` (readonly)     | Number | The parameter's max value     |
 | `minValue` (readonly)     | Number | The parameter's min value     |
@@ -89,7 +89,7 @@ Returns a `AudioParamShim` class that looks and acts just like an `AudioParam` i
 Subscribes to value changes.
 
 | Argument       | Type      | Description                   |
---------------------------------------------------------------
+| -------------- | --------- | ----------------------------- |
 | `fn`           | Function  | A callback function           |
 
 ##### `unsubscribe(fn)`
@@ -97,7 +97,7 @@ Subscribes to value changes.
 Unsubscribes from value changes.
 
 | Argument       | Type      | Description                   |
---------------------------------------------------------------
+| -------------- | --------- | ----------------------------- |
 | `fn`           | Function  | A callback function           |
 
 
