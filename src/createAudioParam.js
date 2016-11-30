@@ -3,7 +3,8 @@ import invariant from 'invariant'
 import isNumber from 'lodash.isnumber'
 import { readonly, nonenumerable, nonconfigurable } from 'core-decorators'
 
-const AudioContextConstructor = window.AudioContext || window.webkitAudioContext
+const globalContext = typeof global !== 'undefined' ? global : window
+const AudioContextConstructor = globalContext.AudioContext || globalContext.webkitAudioContext
 
 /**
  * Returns a constructor/class/function that looks and acts just like an
@@ -18,6 +19,15 @@ const AudioContextConstructor = window.AudioContext || window.webkitAudioContext
  * @return {Function}             A AudioParamShim class
  */
 export default function createAudioParam(name, defaultValue, minValue, maxValue) {
+
+  // Check that we have an `(webkit)AudioContext`
+  if (AudioContextConstructor === undefined) {
+    throw new TypeError(
+      'Neither AudioContext nor webkitAudioContext is available on the global scope. ' +
+      'If you\'re in a node.js environment you need to polyfill it, ' +
+      'perhaps with https://github.com/sebpiq/node-web-audio-api?'
+    )
+  }
 
   // Make sure we have what we need
   invariant(typeof name === 'string' && name.trim().length > 0, 'You must provide a non-empty parameter name to createAudioParam(name, defaultValue, minValue, maxValue)')
@@ -53,7 +63,13 @@ export default function createAudioParam(name, defaultValue, minValue, maxValue)
       const update = () => {
         const currentValue = this.value
         this._subscribers.forEach(fn => fn(currentValue))
-        window.requestAnimationFrame(update)
+
+        if (typeof window !== 'undefined') {
+          window.requestAnimationFrame(update)
+        }
+        else {
+          setTimeout(update, 16) // 16 fps
+        }
       }
 
       update()
