@@ -80,7 +80,8 @@ Returns a `AudioParamShim` class that looks and acts just like an `AudioParam` i
 | `defaultValue` (readonly) | Number | The parameter's default value |
 | `maxValue` (readonly)     | Number | The parameter's max value     |
 | `minValue` (readonly)     | Number | The parameter's min value     |
-| `name` (readonly)         | Number | The parameter's name          |
+| `name` (readonly)         | String | The parameter's name          |
+| `value`                   | Number | The parameter's value         |
 
 #### Methods
 
