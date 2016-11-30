@@ -8,6 +8,7 @@
     "src"
   ],
   "scripts": {
+    "prebuild": "rimraf ./dist/*",
     "build": "babel --out-dir dist src",
     "build:example": "browserify -t babelify -e example/example.js -o example/example.dist.js",
     "build:example:w": "watchify -t babelify -e example/example.js -o example/example.dist.js"
@@ -35,6 +36,7 @@
     "babel-preset-latest": "^6.16.0",
     "babelify": "^7.3.0",
     "browserify": "^13.1.1",
+    "rimraf": "^2.5.4",
     "watchify": "^3.7.0"
   }
 }
