@@ -60,15 +60,19 @@ export default function createAudioParam(name, defaultValue, minValue, maxValue)
       this.context = context
       this.value = this.defaultValue
 
+      let currentValue = this.value
+
       const update = () => {
-        const currentValue = this.value
-        this._subscribers.forEach(fn => fn(currentValue))
+        if (currentValue !== this.value) {
+          this._subscribers.forEach(fn => fn(currentValue))
+          currentValue = this.value
+        }
 
         if (typeof window !== 'undefined') {
           window.requestAnimationFrame(update)
         }
         else {
-          setTimeout(update, 16) // 16 fps
+          setTimeout(update, 16) // 60 fps
         }
       }
 
