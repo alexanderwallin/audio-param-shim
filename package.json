@@ -1,6 +1,6 @@
 {
   "name": "audio-param-shim",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "An AudioParam shim that lets you act on value changes in any way you want",
   "main": "dist/createAudioParam.js",
   "files": [
